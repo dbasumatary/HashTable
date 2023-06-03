@@ -13,6 +13,9 @@
             customHash.Add(23);
 
             customHash.Print();
+
+            customHash.Search(23);
+            customHash.Search(17);
         }
     }
 }

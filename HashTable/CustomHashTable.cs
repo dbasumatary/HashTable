@@ -50,5 +50,30 @@ namespace HashTable
                 Console.WriteLine();
             }
         }
+
+        //Search method
+        public void Search(T name)
+        {
+            int arrayIndex = Math.Abs(name.GetHashCode()) % Names.Length;
+            Node temp = Names[arrayIndex];
+
+            if (temp == null)
+            {
+                Console.WriteLine($"{name} not found");
+                return;
+            }
+
+            while (!temp.Data.Equals(name))
+            {
+                if (temp.Next == null)
+                {
+                    Console.WriteLine($"{name} not found");
+                    return;
+                }
+                temp = temp.Next;
+            }
+
+            Console.WriteLine($"{name} is present at {arrayIndex} index in the hashtable");
+        }
     }
 }
