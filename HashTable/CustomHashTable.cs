@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace HashTable
 {
@@ -74,6 +75,37 @@ namespace HashTable
             }
 
             Console.WriteLine($"{name} is present at {arrayIndex} index in the hashtable");
+        }
+
+        //Delete method
+        public void Delete(T name)
+        {
+            int arrayIndex = Math.Abs(name.GetHashCode()) % Names.Length;
+            Node temp = Names[arrayIndex];
+
+            if (temp == null)
+            {
+                Console.WriteLine($"{name} is not found");
+                return;
+            }
+
+            if (temp.Data.Equals(name))
+            {
+                Names[arrayIndex] = temp.Next;
+                return;
+            }
+
+            while (!temp.Next.Data.Equals(name))
+            {
+                if (temp.Next.Next == null)
+                {
+                    Console.WriteLine($"{name} is not found");
+                    return;
+                }
+                temp = temp.Next;
+            }
+            //Jump from the immediate next to the next of immediate next
+            temp.Next = temp.Next.Next;
         }
     }
 }
