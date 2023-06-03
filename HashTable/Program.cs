@@ -5,13 +5,14 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Hashtable operation");
-            CustomHashTable<int> customHash = new CustomHashTable<int>(10);
+            CustomHashTable<int> customHash = new CustomHashTable<int>(20);
             customHash.Add(31);
-            customHash.Add(12);
+            customHash.Add(17);
             customHash.Add(29);
             customHash.Add(41);
             customHash.Add(23);
 
+            customHash.Print();
         }
     }
 }
